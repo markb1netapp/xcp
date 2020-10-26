@@ -59,6 +59,8 @@
   
 
   
+  <link rel='stylesheet' href='/xcp/us-en/css/na-feature.css' type='text/css'>
+  
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -353,7 +355,7 @@
         
 
         <li class="n-breadcrumb__list-item">
-          <a href="/xcp/us-en/">xcp</a>
+          <a href="/xcp/us-en/">XCP&nbsp;1.6.2</a>
         </li>
         <li class="n-breadcrumb__list-item">
           Get started with XCP
@@ -372,7 +374,175 @@
   <!-- Sidebar Column -->
   
   <div class="col-md-3" >
-      <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    Download PDF
+    <span>
+      <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/>
+    </span>
+  </a>
+</div>
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
+      <span class="n-pdf-section-title">
+        Site
+      </span>
+    </div>
+    <li>
+      <a target="_blank" href="/xcp/us-en/pdfs/fullsite-sidebar/Get_started_with_XCP.pdf" >
+        <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/>
+        Get started with XCP
+      </a>
+    </li>
+  
+
+
+  
+    <div class="n-pdf-section">
+  <span class="n-pdf-section-title">
+    This page
+  </span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/xcp/us-en/pdfs/pages/xcp-get-started-with-xcp.pdf" >
+    <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/>
+    Get started with XCP
+  </a>
+</li>
+
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/xcp/us-en/pdfs/sidebar/Install_XCP.pdf" >
+            <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/>
+            Install XCP
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/xcp/us-en/pdfs/sidebar/Configure_XCP.pdf" >
+            <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/>
+            Configure XCP
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/xcp/us-en/pdfs/sidebar/Plan_data_migration.pdf" >
+            <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/>
+            Plan data migration
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+
+  
+
+
+</ul>
+
+<script>
+  $("#toggleContainerPdf li.active").parents('li').toggle('display');
+  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+  });
+</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
         XCP documentation
       </a></li><li class="  active "><a class="na-navbar-padding" href="xcp-get-started-with-xcp.html">
         Get started with XCP
@@ -449,6 +619,12 @@
   
 </span>
 
+
+  <span>
+    <a target="_blank" href="/xcp/us-en/pdfs/pages/xcp-get-started-with-xcp.pdf" role="button">
+      <img src="/xcp/us-en/images/pdf.png" width="20" height="20"/> Download PDF of this page
+    </a>
+  </span>
 
 
 </p>
