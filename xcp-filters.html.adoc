@@ -16,6 +16,65 @@ XCP provides filter options that can be used in XCP operations. XCP uses filters
 
 For NFS, run `xcp help info` and refer to the FILTERS section to see how to use `-match` and `-exclude` filters.
 
+ FILTERS
+117                  A filter expression should evaluate to True or False in Python. Filters are used
+118                  in XCP for the -match and -exclude options. See below for some examples of the filters.
+119                  Use "xcp help <command>" to check which options are supported for commands.
+120
+121                  Variables and file attributes currently available to use in a filter:
+122                    modified, accessed, changed: Floats representing age in hours
+123                    depth, size, used, uid, gid, type, nlinks, mode, fileid: Integers
+124                    name, base, ext: Strings (if name is "demo.sql" then base is =="demo" and ext is ==".sql")
+125                    owner, group: Strings
+126                    size units: k, m, g, t, p = K, M, G, T, P = 1024, 1048576, 2**30, 2**40, 2**50
+127                    file types: f, d, b, c, l, s, q = F, D, B, C, L, S, Q = 1, 2, 3, 4, 5, 6, 7
+128
+129                  Functions available to use in a filter:
+130                        rxm(pattern): Regular expression match for each file name
+131                        fnm(pattern): Unix-style wildcard match for each file name
+132                        load(path): List of lines from a local (external) file
+133                        rand(N): Match one out of every N files at random
+134                        path(pattern): Wildcard match for the full path
+135                        Note: unlike most shell wildcards, pattern "/a/*" will match path /a/b/c
+136
+137                        The rxm() function only runs Python re.compile (pattern) once.
+138                        Similarly, load() only reads its file once.
+139
+140                  Filter examples:
+141                    Match files modified less than half an hour ago
+142                      "type == f and modified < .5"
+143
+144                    Find anything with "core" in the name ("in" is a Python operator):
+145                      "'core' in name"
+146
+147                    Same match using regular expressions:
+148                      "rxm('.*core.*')"
+149
+150                    Same match using wildcards:
+151                      "fnm('*core*')"
+152
+153                    Match files that are not regular files, directories, or links:
+154                      "type not in (f,d,l)"
+155
+156                    Find jpg files over 500 megabytes (M is a variable):
+157                      "fnm('*.jpg') and size > 500*M"
+158
+159                    Find files with "/demo/smith" in the path (x is the file; str(x) is its full path):
+160                      "'/demo/smith' in str(x)"
+161
+162                    Exclude copying anything with "f" in its name:
+163                      "fnm('*f*')"
+164
+165                    If there are incremental changes in previously included directories and you want to exclude anything that
+166                    has "dir40" as a substring in its name, you can specify the new exclude filter with the sync. This overrides the exclude
+167                    filter used previously with the copy command and applies the new exclude filter.
+168                    Note that if there are incremental changes on the source after the copy operation and there are files with
+169                    "f" in their name, then these are copied on to the target when the sync operation is performed. If you want
+170                    to avoid copying such files or directories, you can use the following command:
+171                    xcp sync  -exclude "'f' in name" -id <id>
+
+
+
 For SMB, run `xcp help -match` to get more details on match (`-exclude` is not available in SMB).
 
 If you want to use filters in XCP commands, run `xcp help <command>` to see if they are supported options.
